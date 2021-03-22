@@ -1,6 +1,7 @@
 const fs = require('fs');
 const http = require('http');
-const url = require('url');
+// const url = require('url');
+const parse = require('url-parse');
 
 /* Third party Modules */
 const slugify = require('slugify');
@@ -31,7 +32,9 @@ console.log(slugs);
 /***** SERVER *****/
 
 const server = http.createServer((req, res) => {
-  const { query, pathname } = url.parse(req.url, true);
+  // const { query, pathname } = url.parse(req.url, true);
+  const { query, pathname } = parse(req.url, true);
+  // console.log(query);
 
   // Overview page
   if (pathname === '/' || pathname === '/overview') {
